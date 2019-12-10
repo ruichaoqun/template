@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="MVP Activity"
+    minApi="14"
+    minBuildApi="14"
+    description="MVP框架activity基类">
+
+    <category value="Activity" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MvpActivity"
+        help="The name of the activity class to create" />
+
+    <parameter
+        id="activityLayout"
+        name="Activity Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${classToResource(activityClass)}_activity"
+        default="mvp_activity"
+        help="The name of the layout to create for the activity" />
+
+    <parameter
+        id="contackClass"
+        name="Contact Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Contact"
+        default="MvpContact"
+        help="The name of the Contact class to create" />
+		
+	<parameter
+        id="moduleClass"
+        name="Module Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Module"
+        default="MvpModule"
+        help="The name of the Module class to create" />
+
+    <parameter
+        id="presenterClass"
+        name="Presenter Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(activityClass))}Presenter"
+        default="MainViewModel"
+        help="The name of the Presenter class to create" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
